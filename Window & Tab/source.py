@@ -1,9 +1,12 @@
-def newTab():
-    driver.switch_to.new_window('tab')
+from selenium import webdriver
+driver = webdriver.Chrome()
 
 def countTabs():
     handles = len(driver.window_handles)
-    print(handles)
+    return handles
 
-newTab()
-countTabs()    
+def newTab(max=99):
+    if countTabs() < max:
+        driver.switch_to.new_window('tab')
+
+newTab(3)
